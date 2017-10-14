@@ -23,24 +23,21 @@ var churchillSpeech = {
 var message1 = "";
 var message2 = "";
 var articleClassGenerous = document.getElementsByTagName("article");
-var donate = document.createElement("h3");
-var donateText = document.createTextNode("");
-donate.appendChild(donateText);
-SideNav.appendChild(donate);
+var donateH3 = document.createElement("h3");
+
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
 
-    var donatePrompt = prompt("How much would you like to donate?");
+    var donatePrompt = window.prompt("How much would you like to donate? (Please enter a numerical value only.)");
 
     if (donatePrompt < 100) {
-      donate = "Thank you for your donation of $" + donatePrompt + "!"
+      var donateAmount = document.createTextNode("Thank you for your donation of $" + donatePrompt + "!");
     } else if (donatePrompt >= 100) {
-      donate = "Thank you for your very generous donation!";
-      //donate.getAttribute("color");
-      //donate.setAttribute("style", "color: #DB152C;"); 
+      var donateAmount = document.createTextNode("Thank you for your very generous donation!");
+      donateH3.setAttribute("style", "color: #DB152C;"); 
     } else {
-      donate = "Please try again."; 
+      var donateAmount = document.createTextNode("Please enter numbers only."); 
     }
 
     for (i = 0; i < articleClassGenerous.length; i++) {
@@ -48,8 +45,9 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
         articleClassGenerous[i].className = ("generous-donation");
       }
    }
-
-    document.getElementById("SideNav").innerHTML = donate;
+    
+    donateH3.appendChild(donateAmount);
+    SideNav.appendChild(donateH3);
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
