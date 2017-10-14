@@ -22,22 +22,21 @@ var churchillSpeech = {
 
 var message1 = "";
 var message2 = "";
-var articleClassGenerous = document.getElementsByTagName("article");
-var donateH3 = document.createElement("h3");
-
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
+    var articleClassGenerous = document.getElementsByTagName("article");
+    var donateH3 = document.createElement("h3");
 
     var donatePrompt = window.prompt("How much would you like to donate? (Please enter a numerical value only.)");
 
-    if (donatePrompt < 100) {
+    if (donatePrompt < 100 && donatePrompt !== "" && donatePrompt > 0) {
       var donateAmount = document.createTextNode("Thank you for your donation of $" + donatePrompt + "!");
     } else if (donatePrompt >= 100) {
-      var donateAmount = document.createTextNode("Thank you for your very generous donation!");
+        var donateAmount = document.createTextNode("Thank you for your very generous donation!");
       donateH3.setAttribute("style", "color: #DB152C;"); 
     } else {
-      var donateAmount = document.createTextNode("Please enter numbers only."); 
+        var donateAmount = document.createTextNode("Did you want to make a donation? Please enter numbers only."); 
     }
 
     for (i = 0; i < articleClassGenerous.length; i++) {
